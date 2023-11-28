@@ -89,7 +89,7 @@ tmux_fpp_start() {
   trap 'rm -f "${tmpfile}"' ERR RETURN
 
   # Save the pane contents to the temporary file.
-  tmux capture-pane -Jp > "${tmpfile}"
+  tmux capture-pane -Jp -S -1000 -E - > "${tmpfile}"
 
   # Create a new window, running the "tmux_fpp_internal_run" function.
   # It will run fpp and clean up the temp file.
